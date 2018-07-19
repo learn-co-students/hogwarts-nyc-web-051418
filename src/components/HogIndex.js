@@ -54,15 +54,22 @@ class HogIndex extends Component {
     })
   }
 
+  handleSelect =  () => {
+    console.log("IT WORKS")
+  }
+
   render() {
     return (
       <div>
         <label> Greased?
           <input className="filterButton" type="checkbox" checked={this.state.greased} onChange={this.handleFilter} />
         </label>
-
-
-
+        <label> Sort
+          <select className="filterButton" onChange={this.handleSelect}>
+            <option value="Name">Name</option>
+            <option value="Weight">Weight</option>
+          </select>
+        </label>
         <div className="ui grid container" >
           {this.buildHogCards()}
         </div>
