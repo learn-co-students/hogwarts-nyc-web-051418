@@ -3,17 +3,12 @@ import hogs from '../porkers_data';
 
 
 class HogDetails extends Component {
-  constructor (props) {
-    super(props)
-  }
-
+  
   buildHogDetails = () => {
     if (this.props.selectedHog === "") {
       return null
     }
     let hog = hogs.find((hog) => hog.name === this.props.selectedHog)
-    console.log(hog)
-
     return (
       <div>
         <h1>{hog.name}</h1>

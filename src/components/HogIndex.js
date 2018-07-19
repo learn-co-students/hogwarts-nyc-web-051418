@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import hogs from '../porkers_data';
 import HogDetails from './HogDetails';
-
+import UUID from 'uuid'
 
 
 class HogIndex extends Component {
@@ -19,9 +19,9 @@ class HogIndex extends Component {
       let graphImage = require('../hog-imgs/' + cleanHogName + '.jpg')
       return (
 
-        <div className="ui eight wide column" >
-          <h3 selectedhogname={hog.name}>{hog.name}</h3>
-          <img src={graphImage} data-selectedhogname={hog.name} />
+        <div key={UUID()} className="ui eight wide column" >
+          <h3 data-selectedhogname={hog.name}>{hog.name}</h3>
+          <img src={graphImage} data-selectedhogname={hog.name} alt={hog.name} />
         </div>)
 
     })
