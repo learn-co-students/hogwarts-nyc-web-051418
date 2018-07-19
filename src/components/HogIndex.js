@@ -10,7 +10,8 @@ class HogIndex extends Component {
     super(props)
     this.state = {
       selectedHog: "",
-      filtered: false
+      filtered: false,
+      sort: "",
     }
   }
 
@@ -22,13 +23,27 @@ class HogIndex extends Component {
 
   buildHogCards = () => {
     let hogsArray;
-    //if state filtered: true, only show greased hogs
     if (this.state.filtered){
       hogsArray = this.greasedHogs()
-    //else (state filtered: false), show all hogs
     }else {
       hogsArray = hogs;
+      if (this.state.sort === "Name"){
+        hogsArray = hogsArray.sort( function(a, b) {
+          var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+          if (nameA < nameB)
+              return -1
+          if (nameA > nameB)
+              return 1
+          return 0
+        })
+      } else if (this.state.sort === "Weight"){
+        hogsArray = hogsArray.sort( function(a, b) {
+        return a["weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water"] - b["weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water"]
+        })
+      console.log(hogsArray)
+      }
     }
+
     return hogsArray.map(hog => {
       let cleanHogName = hog.name.replace(/ /g, "_").toLowerCase()
       let graphImage = require('../hog-imgs/' + cleanHogName + '.jpg')
@@ -54,20 +69,26 @@ class HogIndex extends Component {
     })
   }
 
-  handleSelect =  () => {
-    console.log("IT WORKS")
+  handleSelect =  (event) => {
+    this.setState({
+      sort: event.target.value
+    })
   }
 
   render() {
+    console.log(this.state.sort)
     return (
       <div>
         <label> Greased?
           <input className="filterButton" type="checkbox" checked={this.state.greased} onChange={this.handleFilter} />
         </label>
         <label> Sort
-          <select className="filterButton" onChange={this.handleSelect}>
+          <select value={this.state.sort} className="filterButton" onChange={this.handleSelect}>
+            <option value=""></option>
             <option value="Name">Name</option>
             <option value="Weight">Weight</option>
+
+
           </select>
         </label>
         <div className="ui grid container" >
