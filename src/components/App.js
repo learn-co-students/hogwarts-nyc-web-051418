@@ -32,21 +32,20 @@ class App extends Component {
   }
 
   sortName = (passedHogs) => {
-    return passedHogs.sort( function(a, b) {
-      var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
-      if (nameA < nameB)
-          return -1
-      if (nameA > nameB)
-          return 1
-      return 0
-    }
-  )}
-
-  //use localeCompare
-
+    return passedHogs.sort(
+      (a, b) => a["name"].localeCompare(b["name"]))
+      // function(a, b) {
+      // var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+      // if (nameA < nameB)
+      //     return -1
+      // if (nameA > nameB)
+      //     return 1
+      // return 0
+      // })
+  }
   sortWeight = (passedHogs) => {
     return passedHogs.sort( function(a, b) {
-    return a["weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water"] - b["weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water"]
+    return a["weight"] - b["weight"]
     })
   }
 
