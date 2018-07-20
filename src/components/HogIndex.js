@@ -35,7 +35,10 @@ class HogIndex extends Component {
         <div className="ui grid container" >
           {this.buildHogCards(this.props.array)}
         </div>
-        <HogDetails selectedHog={this.state.selectedHog}/>
+        <HogDetails 
+          selectedHog={this.state.selectedHog} 
+          array={this.props.array}
+        />
       </div>
     )
   }
