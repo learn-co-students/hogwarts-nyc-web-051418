@@ -42,6 +42,8 @@ class App extends Component {
     }
   )}
 
+  //use localeCompare
+
   sortWeight = (passedHogs) => {
     return passedHogs.sort( function(a, b) {
     return a["weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water"] - b["weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water"]
