@@ -22,7 +22,7 @@ class HogIndex extends Component {
       let cleanHogName = hog.name.replace(/ /g, "_").toLowerCase()
       let graphImage = require('../hog-imgs/' + cleanHogName + '.jpg')
       return (
-        <div key={UUID()} className="ui eight wide column" >
+        <div key={UUID()} className="pigTile" >
           <h3 >{hog.name}</h3>
           <img src={graphImage} data-selectedhogname={hog.name} alt={hog.name} onClick={this.handleClick}/>
         </div>)
