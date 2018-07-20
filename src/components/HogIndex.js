@@ -64,7 +64,7 @@ class HogIndex extends Component {
       let graphImage = require('../hog-imgs/' + cleanHogName + '.jpg')
       return (
 
-        <div key={UUID()} className="ui eight wide column" >
+        <div key={UUID()} className="ui four wide column" >
           <h3 >{hog.name}</h3>
           <img src={graphImage} data-selectedhogname={hog.name} alt={hog.name} onClick={this.handleClick}/>
         </div>)
@@ -102,8 +102,6 @@ class HogIndex extends Component {
             <option value=""></option>
             <option value="Name">Name</option>
             <option value="Weight">Weight</option>
-
-
           </select>
         </label>
         <div className="ui grid container" >
