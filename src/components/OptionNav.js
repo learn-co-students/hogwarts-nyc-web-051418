@@ -1,9 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 
-class OptionNav extends Component {
-
-  render () {
+const OptionNav = props => {
     return (
       <div>
         <label> Greased?
@@ -18,7 +16,6 @@ class OptionNav extends Component {
         </label>
       </div>
     )
-  }
 }
 
 export default OptionNav;
