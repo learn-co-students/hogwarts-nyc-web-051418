@@ -12,7 +12,19 @@ class App extends Component {
       greasedFilter: false,
       sort: "",
     }
+    this.changeKey()
   }
+
+  changeKey = () => {
+    const newKey = 'weight';
+    const oldKey = 'weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water';
+
+    hogs.forEach((hog) => {
+      Object.defineProperty(hog, newKey,
+        Object.getOwnPropertyDescriptor(hog, oldKey));
+      delete hog[oldKey];
+    })
+  }  
 
   //optionNAV functionality
   greasedHogs = () => {
