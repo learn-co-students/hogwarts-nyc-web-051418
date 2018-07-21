@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import HogDetails from './HogDetails';
+//component
 import Hog from './Hog';
 
+//INDEX CONTAINER
 class HogIndex extends Component {
   constructor (props) {
     super(props)
@@ -25,10 +26,11 @@ class HogIndex extends Component {
       let cleanHogName = this.cleanHogName(hog.name)
       return (
         <Hog 
-          hogName={hog.name}
+          hogData={hog}
           cleanHogName={cleanHogName}
           graphImage={this.graphImage(cleanHogName)}
           handleClick={this.handleClick}
+          selectedHog={this.state.selectedHog}
         />
         )
     })
@@ -40,10 +42,6 @@ class HogIndex extends Component {
         <div className="ui grid container" >
           {this.buildHogCards(this.props.array)}
         </div>
-        <HogDetails 
-          selectedHog={this.state.selectedHog} 
-          array={this.props.array}
-        />
       </div>
     )
   }

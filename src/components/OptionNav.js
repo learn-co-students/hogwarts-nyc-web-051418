@@ -1,5 +1,6 @@
 import React from 'react'
 
+//FUNCTIONAL COMPONENT
 const OptionNav = props => {
     return (
       <div>

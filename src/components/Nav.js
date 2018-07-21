@@ -1,6 +1,8 @@
-import piggy from '../porco.png'
 import React from 'react'
+//data
+import piggy from '../porco.png'
 
+//FUNCTIONAL COMPONENT
 const Nav = () => {
 	return (
 		<div className="navWrapper">

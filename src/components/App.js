@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
+//data
+import hogs from '../porkers_data';
+//components
 import Nav from './Nav'
 import OptionNav from './OptionNav'
 import HogIndex from './HogIndex';
-import hogs from '../porkers_data';
 
+//APP CONTAINER
 class App extends Component {
   constructor (props) {
     super(props)
