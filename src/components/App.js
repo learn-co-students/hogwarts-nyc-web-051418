@@ -65,7 +65,7 @@ class App extends Component {
 
   filterGreasedHogs = (hogs, value) => hogs.filter( hog => hog.greased === this.cleanValue(value))
   
-  greasedHogs = () => this.state.greasedFilter === null ? 
+  greasedHogs = () => this.state.greasedFilter === "null" ? 
       hogs 
    : 
       this.filterGreasedHogs(hogs,this.state.greasedFilter)

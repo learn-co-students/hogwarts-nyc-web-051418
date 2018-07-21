@@ -72,9 +72,7 @@ ul {
   margin: auto;
 }
 
-
 .pigTile {
-  width: 300px;
   display: inline;
   background-repeat: no-repeat;
   background-position: center 90%;
@@ -84,6 +82,10 @@ ul {
   outline: #3B0B0B dotted thick;
   transition: 0.75s;
   opacity: 1;
+}
+
+.pigTileDetail {
+  width: 250px;
 }
 
 .minBackgroundSneak {
@@ -107,7 +109,6 @@ ul {
   color: #FBB;
 }
 .minPigTile {
-  width: 250px;
   height: 250px;
   background-size: cover;
 }
