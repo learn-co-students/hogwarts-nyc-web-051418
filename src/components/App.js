@@ -48,23 +48,19 @@ class App extends Component {
   }
 
   sortedHogs = (hogsArray) => {
-    if (this.state.sort === "Name") {
-      return hogsArray = this.sortName(hogsArray);
-      }
-    else if (this.state.sort === "Weight"){
-      return hogsArray = this.sortWeight(hogsArray);
-    }
-    else {
-      return hogsArray
+    switch(this.state.sort) {
+      case "Name":
+        return hogsArray = this.sortName(hogsArray);
+      case "Weight":
+        return hogsArray = this.sortWeight(hogsArray);
+      default:
+        return hogsArray
     }
   }
 
   cleanValue = value => value === "true" ? true : false
 
-  filterGreasedHogs = (hogs, value) => {
-    let newHogs = hogs.filter( hog => hog.greased === this.cleanValue(value))
-    return newHogs
-  }
+  filterGreasedHogs = (hogs, value) => hogs.filter( hog => hog.greased === this.cleanValue(value))
   
   greasedHogs = () => this.state.greasedFilter === null ? 
       hogs 

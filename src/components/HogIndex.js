@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import HogDetails from './HogDetails';
-import UUID from 'uuid'
-
+import Hog from './Hog';
 
 class HogIndex extends Component {
   constructor (props) {
@@ -11,21 +10,27 @@ class HogIndex extends Component {
     }
   }
 
-  handleClick = (event) => {
+  handleClick = event => {
     this.setState({
       selectedHog: event.target.dataset.selectedhogname,
     })
   }
 
-  buildHogCards = (hogsArray) => {
+  cleanHogName = hogName => hogName.replace(/ /g, "_").toLowerCase()
+
+  graphImage = cleanHogName => require('../hog-imgs/' + cleanHogName + '.jpg')
+
+  buildHogCards = hogsArray => {
     return hogsArray.map(hog => {
-      let cleanHogName = hog.name.replace(/ /g, "_").toLowerCase()
-      let graphImage = require('../hog-imgs/' + cleanHogName + '.jpg')
+      let cleanHogName = this.cleanHogName(hog.name)
       return (
-        <div key={UUID()} className="pigTile" >
-          <h3 >{hog.name}</h3>
-          <img src={graphImage} data-selectedhogname={hog.name} alt={hog.name} onClick={this.handleClick}/>
-        </div>)
+        <Hog 
+          hogName={hog.name}
+          cleanHogName={cleanHogName}
+          graphImage={this.graphImage(cleanHogName)}
+          handleClick={this.handleClick}
+        />
+        )
     })
   }
 
@@ -44,5 +49,4 @@ class HogIndex extends Component {
   }
 }
 
-export default HogIndex
-;
+export default HogIndex;

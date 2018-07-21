@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const OptionNav = props => {
     return (
       <div>
