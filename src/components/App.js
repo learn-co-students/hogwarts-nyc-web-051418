@@ -31,7 +31,7 @@ class App extends Component {
   }  
 
   //optionNAV functionality
-  sortName = (passedHogs) => {
+  sortName = passedHogs => {
     return passedHogs.sort(
       (a, b) => a["name"].localeCompare(b["name"]))
       // function(a, b) {
