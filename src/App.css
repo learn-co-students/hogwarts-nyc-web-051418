@@ -64,14 +64,13 @@ ul {
 
 .subtleText {
   color: #D1D1D1;
-  font-size: .75em; 
+  font-size: .75em;
 }
 
 
 .indexWrapper {
   margin: auto;
 }
-
 
 .pigTile {
   display: inline;
@@ -83,6 +82,10 @@ ul {
   outline: #3B0B0B dotted thick;
   transition: 0.75s;
   opacity: 1;
+}
+
+.pigTileDetail {
+  width: 250px;
 }
 
 .minBackgroundSneak {
@@ -106,7 +109,6 @@ ul {
   color: #FBB;
 }
 .minPigTile {
-  width: 250px;
   height: 250px;
   background-size: cover;
 }
@@ -131,6 +133,10 @@ ul {
 .footer {
   padding: 1%;
   clear: both;
+}
+
+.filterButton {
+  margin-bottom: 20px;
 }
 
 
