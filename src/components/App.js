@@ -9,12 +9,13 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      greasedFilter: false,
+      greasedFilter: null ,
       sort: "",
     }
     this.changeKey()
   }
 
+  // goes to hogs array and makes weight key more readable
   changeKey = () => {
     const newKey = 'weight';
     const oldKey = 'weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water';
@@ -27,10 +28,6 @@ class App extends Component {
   }  
 
   //optionNAV functionality
-  greasedHogs = () => {
-    return hogs.filter(hog => hog.greased === true)
-  }
-
   sortName = (passedHogs) => {
     return passedHogs.sort(
       (a, b) => a["name"].localeCompare(b["name"]))
@@ -43,47 +40,45 @@ class App extends Component {
       // return 0
       // })
   }
+
   sortWeight = (passedHogs) => {
     return passedHogs.sort( function(a, b) {
     return a["weight"] - b["weight"]
     })
   }
 
-  updateArray = () => {
-    let hogsArray = hogs;
-    if (this.state.greasedFilter){
-      hogsArray = this.greasedHogs(hogsArray)
-      if (this.state.sort === "Name") {
-        hogsArray = this.sortName(hogsArray);
-        }
-      else if (this.state.sort === "Weight"){
-        hogsArray = this.sortWeight(hogsArray);
+  sortedHogs = (hogsArray) => {
+    if (this.state.sort === "Name") {
+      return hogsArray = this.sortName(hogsArray);
       }
-    } else {
-      hogsArray = hogs;
-      if (this.state.sort === "Name") {
-        hogsArray = this.sortName(hogsArray);
-        }
-      else if (this.state.sort === "Weight"){
-        hogsArray = this.sortWeight(hogsArray);
-      }
+    else if (this.state.sort === "Weight"){
+      return hogsArray = this.sortWeight(hogsArray);
     }
-    return hogsArray
+    else {
+      return hogsArray
+    }
   }
+
+  cleanValue = value => value === "true" ? true : false
+
+  filterGreasedHogs = (hogs, value) => {
+    let newHogs = hogs.filter( hog => hog.greased === this.cleanValue(value))
+    return newHogs
+  }
+  
+  greasedHogs = () => this.state.greasedFilter === null ? 
+      hogs 
+   : 
+      this.filterGreasedHogs(hogs,this.state.greasedFilter)
+  
+  // filtered and sorted hogs array passed to HogIndex 
+  updateArray = () => this.sortedHogs(this.greasedHogs())
 
   //optionNav FUNCTIONALITY
-  handleFilter = () => {
-    let greasedVar = !this.state.greasedFilter
+  handleFilter = (action, event) => 
     this.setState({
-      greasedFilter: greasedVar
+      [action]: event.target.value
     })
-  }
-
-  handleSelect =  (event) => {
-    this.setState({
-      sort: event.target.value
-    })
-  }
 
   render() {
     return (

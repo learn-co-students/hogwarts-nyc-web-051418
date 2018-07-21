@@ -5,10 +5,22 @@ const OptionNav = props => {
     return (
       <div>
         <label> Greased?
-          <input className="filterButton" type="checkbox" checked={props.greased} onChange={props.handleFilter} />
-        </label>
+          <select 
+            value={props.greased} 
+            className="filterButton" 
+            onChange={(e) => props.handleFilter("greasedFilter", e)}
+          >
+            <option value="null">All</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+      </label>
         <label> Sort
-          <select value={props.sort} className="filterButton" onChange={props.handleSelect}>
+          <select 
+            value={props.sort} 
+            className="filterButton" 
+            onChange={(e) => props.handleFilter("sort", e)}
+          >
             <option value=""></option>
             <option value="Name">Name</option>
             <option value="Weight">Weight</option>
